@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>EvenTracker for Predicting US Tornado</title>
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+    html,body,h2,h3,h4,h5,h6,.container,.header{
+        background: url(https://media3.giphy.com/media/UIbf99Ufh9LMY/giphy.gif) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        font-size: large;
+        font-family:  'shift',sans-serif;;
+    }
+    label
+	{
+        
+	    color: #a3fdff;
+	    display: block;
+	    padding: 10px;
+	/*margin: 3px;*/
+    }
+    input{
+        font-weight:bold;
+        background-color: #bdefff;
+        font-family: "Arial Black";
+    }
+    select{
+        background-color: #82ffd4;
+    }
+    .jumbotron h1 {
+        color: #6ef6ff;
+        font-family: "Arial Black";
+        font-size: 250%;
+    }
+	p
+	{
+	  color:#F71314;
+	  font-size:2%;
+	  background-color:black;
+	  margin-top:10px;
+	}
+</style>
+</head>
+
+<body style="background-color:#4d8ee6;">
+    <div class="container">
+        <div class="header">
+            <h1 class="text-muted"><span style="color: #FFC31A;font-weight:bold;font-family: Arial Black">
+                Tornado Prediction Result</span></h1>
+        </div>
+        <div class="jumbotron">
+            <div class="container">
+                <h1>U.S. Tornadoes Forecast</h1>
+       	
+			  {% if result1==0 %}
+			   <label><span style="color: cyan; ">Sorry, no current tweets related to Tornado events found at {{name1}} location</span></label>
+			  {% else %}
+               <label><span style="color: cyan;background-color:black;">Tornado Probability for Tomorrow at {{name1}} is: {{ name }}% </span></label>
+			   <button onclick="myFunction()">Generate Alert</button>
+				<marquee behavior="scroll" direction="right"><p id="demo"></p></marquee>
+
+				<script>
+				function myFunction() 
+			{
+				var txt;
+				var person = prompt("Please enter your name:", "Harry");
+				if (person == null || person == "") 
+				{
+					txt = "User cancelled the prompt.";
+				} 
+				else
+				{
+					txt = "@" + person + ": Alert generated at location:{{name1}}";
+				}
+				document.getElementById("demo").innerHTML = txt;
+			}
+				</script>
+              {% endif %}
+                </div>
+
+            </div>
+        </div>
+</body>
+
+</html>
